@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap');
+
+/* Toàn bộ trang */
+/* body,
+html {
+    width: 1440px;
+    margin: 0;
+    padding: 0;
+    background: url('../../assets/Background.jpg') no-repeat center center fixed;
+    background-size: cover;
+} */
+
+.HomePage {
+    /* padding-top: 20px; */
+    padding-top: 20px;
+    /* background-image: var(--default-background-image);
+    background-size: cover;
+    background-repeat: no-repeat; */
+}

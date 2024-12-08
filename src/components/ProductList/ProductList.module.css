@@ -1,0 +1,8 @@
+.productList {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 15px;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.5);
+    justify-content: center;
+}

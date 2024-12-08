@@ -1,0 +1,161 @@
+.chatContainer {
+    display: flex;
+    height: 90vh;
+    /* background-image: var(--default-background-image);
+    background-size: cover;
+    background-repeat: no-repeat; */
+    padding: 20px;
+}
+
+.userList {
+    width: 25%;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-right: 1px solid #ccc;
+    /* padding: 10px 0; */
+    overflow-y: auto;
+    /* Hiển thị thanh cuộn nếu danh sách quá dài */
+}
+
+.userItem {
+    padding: 12px;
+    border-bottom: 1px solid #ccc;
+    cursor: pointer;
+    word-wrap: break-word;
+    /* Tự động xuống dòng khi tên người dùng quá dài */
+    transition: background-color 0.2s, font-weight 0.2s;
+    /* Hiệu ứng chuyển đổi mượt mà */
+}
+
+.userItem:hover,
+.userItem.selected {
+    background-color: rgba(0, 0, 0, 0.1);
+    font-weight: bold;
+    /* Giữ hiệu ứng hover khi được chọn */
+}
+
+.chatArea {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.chatHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: white;
+    border-bottom: 1px solid #ccc;
+}
+
+.chatContent {
+    flex: 1;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.5);
+    overflow-y: auto;
+    /* Hiển thị thanh cuộn nếu nội dung vượt quá chiều cao */
+    word-wrap: break-word;
+    /* Tự động xuống dòng khi văn bản quá dài */
+}
+
+.chatMessage {
+    margin-bottom: 10px;
+    padding: 8px;
+    background-color: #ffffff;
+    border-radius: 5px;
+    word-wrap: break-word;
+    /* Tự động xuống dòng */
+    overflow: hidden;
+    max-width: 100%;
+    /* Giới hạn chiều rộng của tin nhắn */
+}
+
+.chatInput {
+    display: flex;
+    border-top: 1px solid #ccc;
+    background-color: rgba(255, 255, 255, 0.5);
+    padding: 10px;
+    height: 62px;
+}
+
+.chatInput input {
+    flex: 1;
+    border: 1px solid #ccc;
+    padding: 5px 10px;
+    border-radius: 5px;
+    word-wrap: break-word;
+    /* Tự động xuống dòng */
+    overflow-y: auto;
+    /* Hiển thị thanh cuộn dọc nếu nội dung vượt quá chiều cao */
+    resize: none;
+    /* Ngăn người dùng thay đổi kích thước */
+    height: auto;
+    /* Chiều cao tự động thay đổi theo nội dung */
+}
+
+.sendButton {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 5px 15px;
+    margin-left: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Wrapper cho nút và menu */
+.optionsWrapper {
+    position: relative;
+}
+
+/* Nút biểu tượng more */
+.optionsButton {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    position: relative;
+}
+
+/* Menu chức năng */
+.optionsMenu {
+    display: none;
+    /* Ẩn mặc định */
+    position: absolute;
+    top: 40px;
+    right: 0;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    min-width: 150px;
+}
+
+.optionsMenu.active {
+    display: block;
+    /* Hiển thị khi có class active */
+}
+
+.optionsItem {
+    padding: 10px;
+    cursor: pointer;
+    font-size: 14px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.optionsItem:last-child {
+    border-bottom: none;
+}
+
+.optionsItem:hover {
+    background-color: #f0f0f0;
+}
+
+.noUserSelected {
+    background-color: rgba(255, 255, 255, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
