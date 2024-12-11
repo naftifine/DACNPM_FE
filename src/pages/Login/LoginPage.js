@@ -31,8 +31,8 @@ const LoginPage = () => {
         // Lưu thông tin người dùng vào localStorage
         localStorage.setItem("accessToken", data.accessToken);
         localStorage.setItem("refreshToken", data.refreshToken);
-        localStorage.setItem("useriD", data.user.UserID);
-        localStorage.setItem("username", data.user.Username);
+        localStorage.setItem("useriD", data.user.useriD);
+        localStorage.setItem("username", data.user.username);
 
         // Cập nhật trạng thái đăng nhập
         login();
