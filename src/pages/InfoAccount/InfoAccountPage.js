@@ -3,18 +3,19 @@ import './InfoAccountPage.css';
 import Button from '../../components/Button';
 import Header from '../../components/Layout/conponent/Header';
 import axiosInstance from '../axiosInstance';
+
 const InfoAccountPage = () => { 
   const accessToken = localStorage.getItem('accessToken');
   const userID = localStorage.getItem('useriD');
   const username = localStorage.getItem('username');
 
   const [userInfo, setUserInfo] = useState({
-    Username: '',
-    Passw: '',
-    CCCD: '',
-    DateOfBirth: '',
-    Fullname: '',
-    PhoneNumber: '',
+    username: '',
+    password: '',
+    cccd: '',
+    dateofbirth: '',
+    fullname: '',
+    phonenumber: '',
   });
   const [isLoading, setIsLoading] = useState(true);
   const [isEditing, setIsEditing] = useState(false);
@@ -32,11 +33,12 @@ const InfoAccountPage = () => {
    
       try {
         const response = await axiosInstance.post(`http://localhost:3001/users/profile`, { username });
-        console.log("get", accessToken);
-        
         // Sử dụng response.data thay vì response.json()
         if (response.data) {
-          setUserInfo(response.data); // Gán dữ liệu người dùng vào state
+          setUserInfo({
+            ...response.data,
+            dateofbirth: new Date(response.data.dateofbirth).toISOString().split('T')[0],  // Đảm bảo định dạng ngày đúng
+          });
         } else {
           throw new Error('Invalid data format');
         }
@@ -51,7 +53,7 @@ const InfoAccountPage = () => {
    
     fetchUserInfo();
    }, [accessToken, username]);
-   
+
   // Xử lý thay đổi trong form
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -64,26 +66,18 @@ const InfoAccountPage = () => {
   // Lưu thông tin người dùng
   const handleSave = async () => {
     try {
-      const response = await fetch(`http://localhost:3001/users/profile/`, {
-        method: 'PUT', // Sử dụng PUT hoặc PATCH cho việc cập nhật thông tin người dùng
-        headers: {
-          "Authorization": `Bearer ${accessToken}`,  // Gửi token trong header Authorization
-          "Content-Type": "application/json",  // Nội dung yêu cầu là JSON
-        },
-        body: JSON.stringify(userInfo),  // Gửi toàn bộ dữ liệu người dùng đã chỉnh sửa (chuyển thành chuỗi JSON)
-      });
-  
-      if (!response.ok) {
+      const response = await axiosInstance.post(`http://localhost:3001/users/edit`, userInfo);
+      if (response.data) {
+        setUserInfo(response.data); 
+        setIsEditing(false);
+        // Sau khi cập nhật thành công, reload trang để cập nhật lại thông tin
+        window.location.reload();  // Tự động làm mới trang
+      } else {
         throw new Error('Failed to save user info');
       }
-  
-      const updatedUserInfo = await response.json();  // Nhận dữ liệu đã được cập nhật từ server
-      setUserInfo(updatedUserInfo);  // Cập nhật lại state userInfo
-      setIsEditing(false);  // Đặt trạng thái chỉnh sửa thành false để ngừng chế độ chỉnh sửa
-      console.log('User info saved:', updatedUserInfo);  // Log thông tin người dùng đã lưu
     } catch (error) {
       console.error('Error saving user info:', error);
-      setError('Failed to save user info.');  // Hiển thị thông báo lỗi nếu có
+      setError('Failed to save user info.');
     }
   };
 
@@ -117,37 +111,37 @@ const InfoAccountPage = () => {
                 <div className="profile-right">
                   {isEditing ? (
                     <div>
-                      <label htmlFor="Fullname">Họ và tên:</label>
+                      <label htmlFor="fullname">Họ và tên:</label>
                       <input
                         type="text"
-                        id="Fullname"
-                        name="Fullname"
-                        value={userInfo.Fullname}
+                        id="fullname"
+                        name="fullname"
+                        value={userInfo.fullname}
                         onChange={handleChange}
                       />
-                      <label htmlFor="CCCD">CCCD:</label>
+                      <label htmlFor="cccd">CCCD:</label>
                       <input
                         type="text"
-                        id="CCCD"
-                        name="CCCD"
-                        value={userInfo.CCCD}
+                        id="cccd"
+                        name="cccd"
+                        value={userInfo.cccd}
                         onChange={handleChange}
                       />
-                      <label htmlFor="DateOfBirth">Ngày sinh:</label>
+                      <label htmlFor="dateofbirth">Ngày sinh:</label>
                       <input
                         type="date"
-                        id="DateOfBirth"
-                        name="DateOfBirth"
-                        value={userInfo.DateOfBirth}
+                        id="dateofbirth"
+                        name="dateofbirth"
+                        value={userInfo.dateofbirth}
                         onChange={handleChange}
                       />
 
-                      <label htmlFor="PhoneNumber">Số điện thoại:</label>
+                      <label htmlFor="phonenumber">Số điện thoại:</label>
                       <input
                         type="text"
-                        id="PhoneNumber"
-                        name="PhoneNumber"
-                        value={userInfo.PhoneNumber}
+                        id="phonenumber"
+                        name="phonenumber"
+                        value={userInfo.phonenumber}
                         onChange={handleChange}
                       />
                       <div className="ButtonGroup">
@@ -161,10 +155,10 @@ const InfoAccountPage = () => {
                     </div>
                   ) : (
                     <div>
-                      <h2>{userInfo.Fullname}</h2>
-                      <p><b>CCCD:</b> {userInfo.CCCD}</p>
-                      <p><b>Số điện thoại:</b> {userInfo.PhoneNumber}</p>
-                      <p><b>Ngày sinh:</b> {userInfo.DateOfBirth}</p>
+                      <h2>{userInfo.fullname}</h2>
+                      <p><b>CCCD:</b> {userInfo.cccd}</p>
+                      <p><b>Số điện thoại:</b> {userInfo.phonenumber}</p>
+                      <p><b>Ngày sinh:</b> {new Date(userInfo.dateofbirth).toLocaleDateString('vi-VN')}</p>
                     </div>
                   )}
                 </div>
