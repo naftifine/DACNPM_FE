@@ -1,13 +1,12 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import styles from "./ProductCard.module.css";  // Đảm bảo đường dẫn đúng
+import styles from "./ProductCard.module.css";
 
 const ProductCard = ({ id, image, title, price, location }) => {
     const navigate = useNavigate();
 
-    // Hàm xử lý khi click vào sản phẩm
     const handleClick = () => {
-        navigate(`/product/${id}`);  // Điều hướng đến trang chi tiết sản phẩm
+        navigate(`/product/${id}`); // Điều hướng đến trang chi tiết sản phẩm
     };
 
     return (

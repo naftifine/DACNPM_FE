@@ -32,18 +32,9 @@ function Header() {
         setSearchValue(e.target.value); // Cập nhật giá trị tìm kiếm
     };
 
-
-
-    const handleSearch = async () => {
+    const handleSearch = () => {
         if (searchValue.trim() !== "") {
-            try {
-                const response = await fetch(`https://tiktok.fullstack.edu.vn/api/users/search?q=${searchValue}&type=less`);
-                const data = await response.json();
-                setSearchResults(data); // Cập nhật kết quả tìm kiếm
-                navigate("/search"); // Điều hướng đến trang sản phẩm
-            } catch (error) {
-                console.error("Error fetching search results:", error);
-            }
+            console.log("Search Value:", searchValue); // Log giá trị tìm kiếm
         } else {
             console.log("Search is empty");
         }

@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import axios from "axios";
 import classNames from "classnames/bind";
 
 import Button from "../../components/Button";
@@ -13,26 +12,21 @@ const OrderPage = () => {
     const { id } = useParams();
     const navigate = useNavigate();
 
-    const [product, setProduct] = useState(null); // Dữ liệu sản phẩm
-    const [loading, setLoading] = useState(true); // Trạng thái tải dữ liệu
-    const [error, setError] = useState(null); // Trạng thái lỗi
+
+    // Giả sử bạn lấy thông tin sản phẩm từ một API hoặc dữ liệu tĩnh
+    const product = {
+        id: id,
+        image: "https://via.placeholder.com/200",
+        title: "Iphone 14 128GB Màu Trắng",
+        price: 14000000,
+        location: "TP Hồ Chí Minh",
+        seller: "Trần Quang Huy",
+        contact: "0123456789",
+    };
 
     const [quantity, setQuantity] = useState(1); // Quản lý số lượng
     const shippingFee = 40000; // Phí vận chuyển
-    const totalPrice = product ? product.SellPrice * quantity + shippingFee : 0; // Tính tổng tiền
-
-    // Gọi API để lấy thông tin sản phẩm
-    useEffect(() => {
-        axios.get(`https://6756814811ce847c992cfa8f.mockapi.io/api/products/${id}`)
-            .then((response) => {
-                setProduct(response.data); // Lưu sản phẩm vào state
-                setLoading(false); // Tắt trạng thái loading
-            })
-            .catch((error) => {
-                setError("Không thể tải sản phẩm.");
-                setLoading(false); // Tắt trạng thái loading
-            });
-    }, [id]);
+    const totalPrice = product.price * quantity + shippingFee; // Tính tổng tiền
 
     const handleQuantityChange = (e) => {
         setQuantity(Number(e.target.value));
@@ -46,34 +40,20 @@ const OrderPage = () => {
         navigate(-1); // Quay lại trang trước đó
     };
 
-    // Hiển thị trạng thái loading hoặc lỗi
-    if (loading) {
-        return <div>Đang tải...</div>;
-    }
-
-    if (error) {
-        return <div>{error}</div>;
-    }
-
-    if (!product) {
-        return <div>Không tìm thấy sản phẩm!</div>;
-    }
 
     return (
-        <div>
-            <Header />
+        <div><Header />
             <div className={cx("wrapper")}>
                 <div className={cx("orderPage")}>
                     <div className={cx("orderHeader")}>
-                        <img src={product.image} alt={product.PName} className={styles.productImage} />
+                        <img src={product.image} alt={product.title} className={styles.productImage} />
                         <div className={cx("productInfo")}>
-                            <h1>{product.PName}</h1>
-                            <p>Đơn giá: {Number(product.SellPrice).toLocaleString()}đ</p>
+                            <h1>{product.title}</h1>
+                            <p>Đơn giá: {product.price.toLocaleString()}đ</p>
                             <p>Địa điểm: {product.location}</p>
                             <div className={cx("productSummary")}>
                                 <div>
-                                    <p>
-                                        Số lượng:
+                                    <p>Số lượng:
                                         <input
                                             type="number"
                                             min="1"
@@ -83,7 +63,7 @@ const OrderPage = () => {
                                         />
                                     </p>
                                 </div>
-                                <p>Thành tiền: {(product.SellPrice * quantity).toLocaleString()}đ</p>
+                                <p>Thành tiền: {product.price * quantity}đ</p>
                             </div>
                         </div>
                     </div>
@@ -107,7 +87,7 @@ const OrderPage = () => {
 
                             <div className={cx("shippingDetails")}>
                                 <p>Phí vận chuyển: {shippingFee.toLocaleString()}đ</p>
-                                <p>Tổng tiền hàng: {(product.SellPrice * quantity).toLocaleString()}đ</p>
+                                <p>Tổng tiền hàng: {product.price * quantity}đ</p>
                                 <p>Tổng thanh toán: {totalPrice.toLocaleString()}đ</p>
                             </div>
                         </div>
@@ -119,6 +99,7 @@ const OrderPage = () => {
                             <Button outline className={cx("placeOrderButton")} onClick={handleCancelOrder}>Quay lại</Button>
                             <Button primary className={cx("placeOrderButton")} onClick={handleSubmitOrder}>Đặt hàng</Button>
                         </div>
+
                     </div>
                 </div>
             </div>

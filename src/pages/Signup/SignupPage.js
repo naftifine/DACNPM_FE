@@ -73,7 +73,7 @@ const SignupPage = () => {
     try {
       const { confirmPassword, ...dataToSend } = formData;
 
-      const response = await axios.post('https://674b14b171933a4e8854567d.mockapi.io/signup', dataToSend);
+      const response = await axios.post('http://localhost:3001/auth/register', dataToSend);
       alert('Đăng ký thành công!');
       console.log(response.data);
       navigate('/login');

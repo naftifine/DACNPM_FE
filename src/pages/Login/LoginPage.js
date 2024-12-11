@@ -3,10 +3,9 @@ import "./LoginPage.css";
 import Button from "./../../components/Button";
 import { useAuth } from "../../context/AuthContext"; // Import AuthContext
 import Header from "../../components/Layout/conponent/Header";
-
 const LoginPage = () => {
-  const [Username, setUsername] = useState("");
-  const [Passw, setPassw] = useState("");
+  const [username, setusername] = useState("");
+  const [password, setpassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -18,12 +17,12 @@ const LoginPage = () => {
     setErrorMessage("");
 
     try {
-      const response = await fetch("https://674b14b171933a4e8854567d.mockapi.io/signup", {
+      const response = await fetch("http://localhost:3001/auth/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ Username, Passw }),
+        body: JSON.stringify({ username, password }),
       });
 
       if (response.ok) {
@@ -32,8 +31,8 @@ const LoginPage = () => {
         // Lưu thông tin người dùng vào localStorage
         localStorage.setItem("accessToken", data.accessToken);
         localStorage.setItem("refreshToken", data.refreshToken);
-        localStorage.setItem("UserID", data.UserID);
-        localStorage.setItem("Username", data.Username);
+        localStorage.setItem("useriD", data.user.UserID);
+        localStorage.setItem("username", data.user.Username);
 
         // Cập nhật trạng thái đăng nhập
         login();
@@ -55,25 +54,26 @@ const LoginPage = () => {
 
   return (
     <div><Header />
+      
       <div className="login-page">
         <div className="login-container">
-          <h1>Đăng nhập</h1>
+          <h1>Đăng nhập</h1>          
           {errorMessage && <p className="error-message">{errorMessage}</p>}
           <form onSubmit={handleSubmit}>
-            <label htmlFor="Username">Tên đăng nhập</label>
+            <label htmlFor="username">Tên đăng nhập</label>
             <input
               type="text"
-              id="Username"
-              value={Username}
-              onChange={(e) => setUsername(e.target.value)}
+              id="username"
+              value={username}
+              onChange={(e) => setusername(e.target.value)}
               required
             />
             <label htmlFor="password">Mật khẩu</label>
             <input
               type="password"
-              id="Passw"
-              value={Passw}
-              onChange={(e) => setPassw(e.target.value)}
+              id="password"
+              value={password}
+              onChange={(e) => setpassword(e.target.value)}
               required
             />
             <Button primary type="submit" disabled={isSubmitting}>
