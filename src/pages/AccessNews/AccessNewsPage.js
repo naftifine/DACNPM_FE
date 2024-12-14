@@ -39,7 +39,7 @@ const AccessNewsPage = () => {
 
   const filteredItems = filter === 'all'
     ? items
-    : items.filter(item => item.status === filter);
+    : items.filter(item => item.approved === filter);
 
   return (
     <div>

@@ -1,0 +1,83 @@
+
+.orderListPage {
+    padding: 20px;
+    min-height: 100vh;
+    margin-left: 12%;
+    margin-right: 12%;
+}
+
+/* Title of the page */
+h1 {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* Error message styling */
+.error {
+    text-align: center;
+    color: red;
+}
+
+/* Loading state styling */
+.loading {
+    text-align: center;
+    font-size: 18px;
+}
+
+/* List of orders */
+.orderList {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Individual order item */
+.orderItem {
+    background-color: white;
+    margin-bottom: 20px;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* The order information container */
+.orderInfo {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr; 
+    align-items: center; /* Vertically align the items */
+}
+
+/* Column for product image */
+.column img {
+    width: 300px;
+    height: auto;
+    object-fit: cover; /* Ensure the image fills the container without distortion */
+    border-radius: 8px;
+}
+
+/* Product details styling */
+.column p {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+/* Strong text for labels */
+.column strong {
+    color: #333;
+    font-weight: bold;
+}
+
+/* Styling for product image column */
+.product-image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+/* Style for the order information sections */
+.column {
+    display: flex;
+    flex-direction: column;
+}
+

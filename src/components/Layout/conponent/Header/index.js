@@ -48,6 +48,10 @@ function Header() {
         navigate('/upload-product');  // Điều hướng đến trang /upload-product
     };
 
+    const handleNavigateToOrderList = () => {
+        navigate('/orderlist');  // Điều hướng đến trang /orderlist
+    };
+
     const handleLogout = () => {
         localStorage.removeItem("accessToken"); // Xóa accessToken khỏi localStorage
         localStorage.removeItem("refreshToken");
@@ -125,6 +129,7 @@ function Header() {
                                 <img src={images.avatarDefault} alt="User Avatar" />
                                 <div className={cx("avatar-dropdown")}>
                                     <Button onClick={handleNavigateToInfo}>Hồ sơ người dùng</Button>
+                                    <Button onClick={handleNavigateToOrderList}>Các đơn hàng đã đặt</Button> {/* Thêm nút này */}
                                     <Button onClick={handleLogout}>Đăng xuất</Button>
                                 </div>
                             </div>

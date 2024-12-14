@@ -22,7 +22,7 @@ const Category = () => {
     <ul className="category-list">
       {categories.map((category) => (
         <li key={category.categoryid} className="category-item">
-          <a href={`/search?category=${category.categoryid}`} className="category-link">
+          <a href={`/search?categoryid=${category.categoryid}&categoryname=${category.name}`} className="category-link">
             <span>{category.name}</span>
           </a>
         </li>

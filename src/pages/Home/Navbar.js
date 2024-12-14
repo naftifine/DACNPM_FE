@@ -10,14 +10,6 @@ import Category from "../../components/Layout/conponent/Category"; // Import Cat
 function Navbar() {
   const [isDropdownOpen, setDropdownOpen] = useState(false); // State để điều khiển dropdown
 
-  const navItems = [
-    { name: "Danh mục", icon: icon0 },
-    { name: "Đồ điện tử", icon: icon1 },
-    { name: "Mỹ phẩm", icon: icon2 },
-    { name: "Quần áo", icon: icon3 },
-    { name: "Đồ gia dụng", icon: icon4 },
-  ];
-
   // Toggle dropdown khi nhấn vào "Danh mục"
   const toggleDropdown = () => {
     console.log("Toggling dropdown"); // Log để kiểm tra sự kiện click
@@ -27,30 +19,45 @@ function Navbar() {
   return (
     <div className="navbar">
       <div className="navbar-container">
-        {navItems.map((item, index) => (
-          <div className="navbar-item" key={index}>
-            {/* Khi là "Danh mục", render dropdown */}
-            {item.name === "Danh mục" ? (
-              <div className="navbar-item dropdown" onClick={toggleDropdown}>
-                <img src={item.icon} alt={item.name} className="navbar-icon" />
-                <span className="navbar-text">{item.name}</span>
-                {isDropdownOpen && (
-                  <div className="dropdown-content">
-                    <Category /> 
-                  </div>
-                )}
-              </div>
-            ) : (
-              <div className="navbar-item">
-                <img src={item.icon} alt={item.name} className="navbar-icon" />
-                <span className="navbar-text">{item.name}</span>
-              </div>
-            )}
-          </div>
-        ))}
+        {/* Danh mục */}
+        <div className="navbar-item dropdown" onClick={toggleDropdown}>
+          <img src={icon0} alt="Danh mục" className="navbar-icon" />
+          <span className="navbar-text">Danh mục</span>
+          {isDropdownOpen && (
+            <div className="dropdown-content">
+              <Category />
+            </div>
+          )}
+        </div>
+
+        {/* Đồ điện tử */}
+          <a href={`/search?categoryid=${1}&categoryname=${"Điện tử"}`} className="navbar-item">
+            <img src={icon1} alt="Điện tử" className="navbar-icon" />
+            <span className="navbar-text">Điện tử</span>
+          </a>
+
+        {/* Mỹ phẩm */}
+        <a href={`/search?categoryid=${2}&categoryname=${"Thời trang và Mỹ phẩm"}`} className="navbar-item">
+          <img src={icon2} alt="Thời trang và Mỹ phẩm" className="navbar-icon" />
+          <span className="navbar-text">Thời trang và Mỹ phẩm</span>
+        </a>
+
+        {/* Sách */}
+        <a href={`/search?categoryid=${7}&categoryname=${"Sách và văn phòng phẩm"}`} className="navbar-item">
+          <img src={icon3} alt="Sách và văn phòng phẩm" className="navbar-icon" />
+          <span className="navbar-text">Sách và văn phòng phẩm</span>
+          </a>
+
+        {/* Đồ gia dụng */}
+          <a href={`/search?categoryid=${3}&categoryname=${"Đồ gia dụng"}`} className="navbar-item">
+          <img src={icon4} alt="Đồ gia dụng" className="navbar-icon" />
+          <span className="navbar-text">Đồ gia dụng</span>
+          </a>
       </div>
     </div>
   );
 }
 
 export default Navbar;
+
+

@@ -6,25 +6,34 @@ import product3 from '../../assets/HomePage/Suggestions/product3.jpg';
 import product4 from '../../assets/HomePage/Suggestions/product4.jpg';
 
 function Suggestions() {
-  const products = [
-    { name: 'Laptop Dell', image: product1 },
-    { name: 'Bình nước Ln', image: product2 },
-    { name: 'Sữa rửa mặt', image: product3 },
-    { name: 'Laptop Lenovo',image: product4 },
-  ];
-
   return (
     <div className="suggestions">
       <h2>Gợi ý cho bạn</h2>
       <div className="product-grid">
-        {products.map((product, index) => (
-          <div className="product-card" key={index}>
-            <img src={product.image} alt={product.name} />
-              <a href={`/search?name=${product.name}`} className='product-link'>
-              <span>{product.name}</span>
-              </a>
-          </div>
-        ))}
+        <div className="product-card">
+          <a href="/product/2" className='product-link'>
+            <img src={product1} alt="Laptop" />
+            <span>Laptop</span>
+          </a>
+        </div>
+        <div className="product-card">
+          <a href="/product/27" className='product-link'>
+            <img src={product2} alt="Bình nước" />
+            <span>Bình nước</span>
+          </a>
+        </div>
+        <div className="product-card">
+          <a href="/product/12" className='product-link'>
+            <img src={product3} alt="Sữa rửa mặt" />
+            <span>Sữa rửa mặt</span>
+          </a>
+        </div>
+        <div className="product-card">
+          <a href="/product/4" className='product-link'>
+            <img src={product4} alt="Tai nghe" />
+            <span>Tai nghe D</span>
+          </a>
+        </div>
       </div>
     </div>
   );

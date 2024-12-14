@@ -1,4 +1,4 @@
-:root {}
+
 
 .wrapper {
     --search-border-radius: 92px;
@@ -179,6 +179,7 @@
     width: 100%;
     height: 20px;
     background-color: transparent;
+    
 }
 
 .avatar-btn:hover .avatar-dropdown {

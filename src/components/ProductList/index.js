@@ -63,7 +63,7 @@ const ProductList = ({ categoryId, searchName }) => {
             id={product.productid}
             image={product.image}
             title={product.name}
-            price={product.price}
+            price={product.price.toLocaleString()}
             location={product.location}
           />
         ))

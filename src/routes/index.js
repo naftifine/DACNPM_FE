@@ -9,7 +9,7 @@ import ProductUpload from "./../pages/ProductUpload"; // Import trang đăng s�
 import ChatBox from "./../pages/ChatBox"; // Import trang chat
 import { InfoAccountPage } from "./../pages/InfoAccount"; // Import trang chat
 import { AccessNewsPage } from "./../pages/AccessNews";
-
+import  OrderListPage from "./../pages/OrderList";
 const publicRoutes = [
     { path: "/", component: HomePage },
     { path: "/login", component: LoginPage },
@@ -21,6 +21,7 @@ const publicRoutes = [
     { path: "/chat", component: ChatBox }, // Route chat
     { path: "/info", component: InfoAccountPage },
     { path: "/accessnewspage", component: AccessNewsPage },
+    { path: "/orderlist", component: OrderListPage},
 ];
 
 const privateRoutes = [];
