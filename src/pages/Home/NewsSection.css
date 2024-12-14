@@ -1,0 +1,32 @@
+.news-section {
+  margin: 20px;
+  padding: 15px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.news-section h2 {
+  font-size: 24px;
+  margin-bottom: 15px;
+}
+
+.news-section .news-item {
+  padding: 10px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.news-section .news-item:last-child {
+  border-bottom: none;
+}
+
+.news-section .news-item h3 {
+  font-size: 18px;
+  margin: 0 0 5px;
+}
+
+.news-section .news-item p {
+  font-size: 14px;
+  color: #555;
+}

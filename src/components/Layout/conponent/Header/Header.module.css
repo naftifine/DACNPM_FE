@@ -1,0 +1,201 @@
+:root {}
+
+.wrapper {
+    --search-border-radius: 92px;
+    --search-height: 46px;
+    --search-button-width: 52px;
+    --search-top-spacer: 9px;
+
+    /* background-image: var(--default-background-image); */
+    background-color: transparent;
+    background-size: cover;
+    height: var(--default-layout-header-height, 60px);
+
+    box-shadow: 0 1px 1px rgb(0 0 0 / 12%);
+    display: flex;
+    justify-content: center;
+}
+
+.inner {
+    height: 100%;
+    width: var(--default-layout-width);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 24px;
+}
+
+.logo {
+    width: 229px;
+    background-color: transparent;
+}
+
+.logo img {
+    width: 100%;
+    height: auto;
+}
+
+.logo img:hover {
+    cursor: pointer;
+}
+
+.home {
+    display: flex;
+    align-items: center;
+}
+
+.search {
+    position: relative;
+    height: 46px;
+    background-color: #fff;
+    border-radius: 6px;
+    display: flex;
+    border: 1.5px solid transparent;
+    width: 637px;
+}
+
+.search input {
+    height: 100%;
+    color: var(--black);
+    font-size: 1.6rem;
+    flex: 1;
+    background-color: transparent;
+    caret-color: var(--primary);
+}
+
+.search .clear-btn {
+    padding: 14px 14px;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(22, 24, 35, 0.34);
+    cursor: pointer;
+    background-color: transparent;
+
+}
+
+.search .search-btn {
+    cursor: pointer;
+    width: var(--search-button-width);
+    height: 100%;
+    font-size: 1.8rem;
+    background-color: transparent;
+    color: rgba(22, 24, 35, 0.34);
+}
+
+.search .search-btn:hover {
+    background-color: #ece8e8;
+}
+
+.actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+}
+
+.actions button {
+    position: relative;
+}
+
+
+.post-btn,
+.chat-btn,
+.cart-btn {
+    margin-right: 18px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 3rem;
+    color: var(--header-color);
+}
+
+.avatar-btn {
+    width: 40px;
+    /* Đặt chiều rộng cho nút avatar */
+    height: 40px;
+    /* Đặt chiều cao cho nút avatar */
+    border-radius: 50%;
+    /* Bo tròn thẻ cha */
+    overflow: hidden;
+    /* Ẩn phần ảnh thừa nếu có */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.avatar-btn img {
+    width: 100%;
+    /* Đảm bảo ảnh bao phủ đầy thẻ cha */
+    height: 100%;
+    /* Đảm bảo ảnh bao phủ đầy thẻ cha */
+    object-fit: cover;
+    /* Cắt ảnh để không bị méo */
+}
+
+
+.icon-tooltip {
+    padding: 5px 10px;
+    position: absolute;
+    bottom: -30px;
+    /* Move the tooltip below the icon */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.actions button:hover .icon-tooltip {
+    visibility: visible;
+    opacity: 1;
+}
+
+.avatar-dropdown {
+    position: absolute;
+    /* Move the dropdown below the avatar */
+    transform: translateY(70%);
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 200px;
+    padding: 10px;
+    display: none;
+}
+
+.avatar-dropdown::after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: -20px;
+    right: 0;
+    width: 100%;
+    height: 20px;
+    background-color: transparent;
+}
+
+.avatar-btn:hover .avatar-dropdown {
+    display: block;
+}
+
+.avatar-dropdown Button {
+    color: var(--black);
+    width: 100%;
+    padding: 10px;
+    background: none;
+    border: none;
+    text-align: left;
+    cursor: pointer;
+    font-size: 1.6rem;
+}
+
+.avatar-dropdown button:hover {
+    background-color: #f4f4f4;
+}

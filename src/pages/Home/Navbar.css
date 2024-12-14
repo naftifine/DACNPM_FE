@@ -1,0 +1,66 @@
+/* Navbar.css */
+
+/* Kiểu dáng cho Navbar */
+.navbar {
+    margin: 0 40px;
+    border-radius: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background-color: rgba(255, 255, 255, 0.5);
+  }
+  
+  /* Container chứa các item */
+  .navbar-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  
+  /* Kiểu dáng từng mục trong Navbar */
+  .navbar-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    padding: 5px 10px;
+    transition: transform 0.2s ease, color 0.2s ease;
+  }
+  
+  /* Hover hiệu ứng */
+  .navbar-item:hover {
+    transform: scale(1.1);
+    color: #007bff;
+  }
+  
+  /* Kiểu dáng icon */
+  .navbar-icon {
+    height: 70px;
+    width: auto;
+    object-fit: contain;
+  }
+  
+  /* Kiểu dáng text */
+  .navbar-text {
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  /* Dropdown mặc định ẩn */
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: rgba(240, 248, 255, 1);
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+    width: 250px;
+  }
+  
+  /* Hiển thị dropdown khi trạng thái mở */
+  .navbar-item.dropdown .dropdown-content {
+    display: block;
+  }
+  

@@ -1,0 +1,75 @@
+/* Bao quanh giao diện login */
+.login-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 90vh;
+    color: rgb(0, 0, 70);
+    gap:10px;
+}
+
+.left-container {
+    background-color: rgba(215, 254, 255, 0.5);
+    padding: 20px 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    display: flex; /* Sử dụng Flexbox */
+    justify-content: center; /* Căn giữa theo chiều ngang */
+    align-items: center; /* Căn giữa theo chiều dọc */
+    padding-bottom: 10%;
+    line-height: 2;
+    width: 750px;
+    height: 600px;
+    flex-direction: column; /* Đảm bảo nội dung được căn chỉnh theo cột */
+    font-size: 30px;
+}
+
+/* Hộp đăng nhập */
+.login-container {
+    background-color: rgba(215, 254, 255, 0.5);
+    padding: 20px 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 400px;
+    height: 600px;
+}
+
+/* Tiêu đề */
+.login-container h1 {
+    margin-bottom: 20px;
+    font-size: 50px;
+    margin-bottom: 55px;
+    font-weight: 300px;
+}
+
+/* Label */
+.login-container label {
+    display: block;
+    text-align: left;
+    margin-bottom: 20px;
+    font-size: 14px;
+    padding-left: 20px;
+}
+
+/* Input */
+
+
+/* Label */
+.login-container label {
+    color: #000000;
+    font-size: 26px;
+}
+
+/* Button */
+.login-container Button {
+    width: 50%;
+    height: 70px;
+    padding: 10px;
+    border-radius: 12px;
+    font-size: 25px;
+    transition: background-color 0.3s ease;
+    margin-top: 50px;
+}
